@@ -410,6 +410,23 @@ function Play_music(song){
 	//setTimeout(function(){note[0].pause();},250);
 }
 
+function Send_js(){
+	var form = document.createElement('form');
+	var request = document.createElement('input');
+
+	form.method = 'POST';
+	form.action = 'http://demo5225524.mockable.io/post_test';
+
+	request.type = 'hidden';
+	request.name = 'data';
+	request.value = 'hello world';
+	
+	form.appendChild(request);
+	document.body.appendChild(form);
+
+	form.submit();
+}
+
 // データをphpに送信して保存
 function Send_php(){
 	//var bloburl=[];
