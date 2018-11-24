@@ -1,1 +1,35 @@
-Hello world Github Pages!
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Audio</title>
+<link href="scale_rec.css" rel="stylesheet" type="text/css">
+<script src="anime.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="scale_rec.js" charset="utf-8"></script>
+</head>
+<body onload="Initialize()">
+<div class="title">声データ録音</div>
+<div class="subscribe">「Start」ボタンを押すと、対応するピアノの音が1秒間流れ、その後、1秒間音声が録音されます。<br>ピアノと同じ音程で、あなたの声をマイクに入力してください。<br>「ドレミファソラシド」の8音の入力が終わると終了です。</div>
+<br>
+録音開始：<input type="button" style="font:10.5pt Arial;" value="Start" onclick="Record();" />
+<br>
+<canvas id="piano"></canvas><br>
+<img src="offrec.png" width="120" height="150" id="singer"><canvas id="graph" width="480" height="150"></canvas><br>
+<div id="result">
+<div class="fade1">録音が完了しました。<input type="button" style="font:10.5pt Arial;" value="録音結果を聞く" onclick="Play_rec();" /></div>
+<div class="fade2"><font size="2">研究のため、音声データを収集しています。あなたの音声をデータとして保存してもよろしいですか？</font></div>
+<div class="fade2"><font size="2">保存したデータは、"良い声"の分析のために利用します。</font></div>
+<div class="fade2"><font size="2">名前は入力しなくてもかまいません。入力していただけた場合、分析した結果をお知らせできるかもしれません。</font></div>
+<div class="fade2"><font size="2">ご協力いただける場合は下の送信ボタンを押してください。</font></div>
+<div class="fade2">名前：<input type="text" id="name" size="15" maxlength="20"><input type="button" style="font:10.5pt Arial;" value="送信" onclick="Send_php();" /></div>
+<div class="fade3"><br>録音結果を使った曲を聞いてみる。</div>
+<div class="fade3">
+<input type="button" style="font:10.5pt Arial;" value="聖者の行進" onclick="Play_music('seija');" />
+<input type="button" style="font:10.5pt Arial;" value="もろびとこぞりて" onclick="Play_music('morobito');" />
+<input type="button" style="font:10.5pt Arial;" value="ロンドン橋" onclick="Play_music('rondon');" />
+</div>
+</div>
+
+</body>
+</html>
