@@ -410,6 +410,7 @@ function Play_music(song){
 	//setTimeout(function(){note[0].pause();},250);
 }
 
+/*
 function Send_js(){
 	var form = document.createElement('form');
 	var request = document.createElement('input');
@@ -425,6 +426,38 @@ function Send_js(){
 	document.body.appendChild(form);
 
 	form.submit();
+}
+*/
+
+function Send_js(){
+	var reader = [];
+	for(var i=0;i<8;i++){
+		//bloburl[i] = window.URL.createObjectURL( record_data[i] );
+		reader[i] = new FileReader();
+		reader[i].readAsDataURL(record_data[i]);
+	}
+	var name = document.getElementById("name").value;
+	reader[7].onload = function(){
+	    $.ajax({
+	      url : "http://demo5225524.mockable.io/post_test",
+	      type : "POST",
+		  dataType:'text',
+		  data: {
+			    name : name,
+			    dowav : reader[0].result,
+			    rewav : reader[1].result,
+			    miwav : reader[2].result,
+			    fawav : reader[3].result,
+			    sowav : reader[4].result,
+			    lawav : reader[5].result,
+			    tiwav : reader[6].result,
+			    hidowav : reader[7].result
+			  },
+	      success : function(r) {
+	        alert("Success!");
+	      }
+    	});
+    }
 }
 
 // データをphpに送信して保存
